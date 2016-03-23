@@ -11,10 +11,7 @@ public class Main {
 		A = getA();
 		bubbleSort(A);
 		check(A);
-	}
 
-	static int[] getA() {
-		return new int[] { 8, 5, 3, 9, 2, 11, 7, 1, 4, 10, 6 };
 	}
 
 	static void insertionSort(int[] A) {
@@ -48,5 +45,9 @@ public class Main {
 		for (int i = 0; i < expected.length; i++) {
 			assert (expected[i] == A[i]);
 		}
+	}
+
+	static int[] getA() {
+		return new int[] { 8, 5, 3, 9, 2, 11, 7, 1, 4, 10, 6 };
 	}
 }
