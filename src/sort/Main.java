@@ -12,6 +12,10 @@ public class Main {
 		bubbleSort(A);
 		check(A);
 
+        A = getA();
+        selectionSort(A);
+        check(A);
+
 	}
 
 	static void insertionSort(int[] A) {
@@ -33,6 +37,23 @@ public class Main {
 			}
 		}
 	}
+
+	static void selectionSort(int[] A) {
+        int left = 0;
+        int minIndex = 0;
+        while(left < A.length -1 ) {
+            for (int i = left, min = Integer.MAX_VALUE; i < A.length; i++) {
+                if (min > A[i]) {
+                    min = A[i];
+                    minIndex = i;
+                }
+            }
+            swap(A, left, minIndex);
+            left++;
+        }
+
+    }
+
 
 	static void swap(int[] A, int a, int b) {
 		int temp = A[a];
