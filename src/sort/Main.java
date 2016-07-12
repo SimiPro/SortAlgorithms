@@ -3,18 +3,46 @@ package sort;
 public class Main {
 	static int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
+	static class Timer {
+		long currentMillis = 0;
+
+		void start() {
+			currentMillis = System.currentTimeMillis();
+		}
+
+		void stop(String activity) {
+			System.out.println(
+					"Activity: " + activity + " || Time passed: " + (System.currentTimeMillis() - currentMillis));
+			currentMillis = System.currentTimeMillis();
+		}
+	}
+
 	public static void main(String[] args) {
+		Timer timer = new Timer();
+
 		int[] A = getA();
+		timer.start();
 		insertionSort(A);
+		timer.stop("Insertion Sort");
 		check(A);
 
 		A = getA();
+		timer.start();
 		bubbleSort(A);
+		timer.stop("Bubble Sort");
 		check(A);
 
-        A = getA();
-        selectionSort(A);
-        check(A);
+		A = getA();
+		timer.start();
+		selectionSort(A);
+		timer.stop("Selection Sort");
+		check(A);
+
+		A = getA();
+		timer.start();
+		new Quicksort(A);
+		timer.stop("Quicksort");
+		check(A);
 
 	}
 
@@ -39,21 +67,20 @@ public class Main {
 	}
 
 	static void selectionSort(int[] A) {
-        int left = 0;
-        int minIndex = 0;
-        while(left < A.length -1 ) {
-            for (int i = left, min = Integer.MAX_VALUE; i < A.length; i++) {
-                if (min > A[i]) {
-                    min = A[i];
-                    minIndex = i;
-                }
-            }
-            swap(A, left, minIndex);
-            left++;
-        }
+		int left = 0;
+		int minIndex = 0;
+		while (left < A.length - 1) {
+			for (int i = left, min = Integer.MAX_VALUE; i < A.length; i++) {
+				if (min > A[i]) {
+					min = A[i];
+					minIndex = i;
+				}
+			}
+			swap(A, left, minIndex);
+			left++;
+		}
 
-    }
-
+	}
 
 	static void swap(int[] A, int a, int b) {
 		int temp = A[a];
